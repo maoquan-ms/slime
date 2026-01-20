@@ -507,6 +507,12 @@ def _compute_server_args(
         "enable_draft_weights_cpu_backup": True,
     }
 
+    if args.sglang_reasoning_parser:
+        kwargs["reasoning_parser"] = args.sglang_reasoning_parser
+
+    if args.sglang_tool_call_parser:
+        kwargs["tool_call_parser"] = args.sglang_tool_call_parser
+
     if worker_type == "prefill":
         kwargs["disaggregation_mode"] = "prefill"
         kwargs["load_balance_method"] = "round_robin"
